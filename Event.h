@@ -1,7 +1,5 @@
 #pragma once
 
-#include <Base/Base.h>
- 
 namespace AEON
 {
     class AEON_DLL Event : public Inherit< Object, Event >

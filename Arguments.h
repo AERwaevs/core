@@ -1,7 +1,5 @@
 #pragma once
 
-#include <Base/Base.h>
-
 namespace AEON
 {
     /*  Struct containing command-line arguments passed into AEON.dll 

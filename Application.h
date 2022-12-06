@@ -1,7 +1,5 @@
 #pragma once
 
-#include <Base/Base.h>
-
 #include <Core/Arguments.h>
 #include <Core/Events/WindowEvents.h>
 #include <Core/Events/KeyEvents.h>

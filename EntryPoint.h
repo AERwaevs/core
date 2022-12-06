@@ -1,5 +1,3 @@
-#include <Base/Base.h>
-
 #include <Core/Arguments.h>
 #include <Core/Application.h>
 
