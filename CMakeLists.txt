@@ -1,4 +1,4 @@
-add_library(                aeon-core   SHARED      Application.cpp                     )
+add_library(                aeon-core   SHARED      Application.cpp EntryPoint.h )
 add_dependencies( aeon-core
     loguru
     aeon-base

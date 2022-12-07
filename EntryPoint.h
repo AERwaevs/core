@@ -15,28 +15,21 @@ namespace AEON
     }
 }
 
-#ifdef AEON_PLATFORM_WINDOWS
-#   include <windows.h>
-
-//BOOL APIENTRY DllMain( HANDLE hModule, DWORD ul_reason_for_call, LPVOID lpReserved )
+//* Why does the win32 documentation insist this is how you start an application
+//* when main() works just fine???
+//
+//#ifdef AEON_COMPILER_MSC
+//
+//int wWinMain( HINSTANCE hInst, HINSTANCE hInstPrev, PWSTR cmdline, int cmdshow )
 //{
 //    return AEON::EntryPoint( __argc, __argv );
 //}
-
-#endif
-
-#ifdef AEON_COMPILER_MSC
-
-int WinMain( HINSTANCE hInst, HINSTANCE hInstPrev, PSTR cmdline, int cmdshow )
-{
-    return AEON::EntryPoint( __argc, __argv );
-}
-
-#else
+//
+//#else
 
 int main( int argc, char** argv )
 {
     return AEON::EntryPoint( argc, argv );
 }
 
-#endif
+//#endif
