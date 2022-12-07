@@ -1,6 +1,6 @@
 #pragma once
 
-#include <Core/KeyCodes.h>
+#include <Input/KeyCodes.h>
 #include <Core/Events/WindowEvents.h>
 
 

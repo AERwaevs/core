@@ -1,6 +1,6 @@
 #pragma once
 
-#include <Core/MouseCodes.h>
+#include <Input/MouseCodes.h>
 #include <Core/Events/WindowEvents.h>
 
 
