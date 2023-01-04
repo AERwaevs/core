@@ -13,7 +13,7 @@ namespace AEON
         : Inherit( window ), m_code( code ), m_key( key ), m_mod( mod )
         {};
 
-        Key::Mod        code() const { return m_mod; }
+        Key::ScanCode   code() const { return m_code; }
         Key::Code       key()  const { return m_key; }
         Key::Mod        mod()  const { return m_mod; }
     private:
