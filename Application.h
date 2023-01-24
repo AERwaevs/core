@@ -18,12 +18,11 @@ namespace AEON
                 Application( const String& name = "AEON", Arguments args = Arguments() );
         virtual ~Application();
 
-        static  Application&    Instance()      { return *s_instance;   }
-
-                Renderer&       GetRenderer()   { return *m_renderer;   }
-                Windows&        GetWindows()    { return  m_windows;    }
-                Arguments       GetArguments()  { return  m_arguments;  }
-                String          GetName()       { return  m_name;       }
+        static  Application&    instance()   { return *s_instance;   }
+                Renderer&       renderer()   { return *m_renderer;   }
+                Windows&        windows()    { return  m_windows;    }
+                Arguments       arguments()  { return  m_arguments;  }
+                String          name()       { return  m_name;       }
     protected:
                 void            Close();
         virtual void            Update();
