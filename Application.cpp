@@ -5,15 +5,13 @@
 namespace AEON
 {
     AEON_API Application::Application( const String& name, Arguments        args )
-    :                                   m_name(      name ), m_arguments(   args )
+    : m_name( name ), m_arguments( args ), m_renderer( Renderer::create( Renderer::Vulkan ) )
     {
         Log::Init(  args.Count(), 
                     args.Values() );
         Log::New(   name );
         
         s_instance = this;
-        //! crash here because we're creating a renderer without a window
-        //! m_renderer = Renderer::create( Graphics::Renderer::Vulkan );
     }
 
     AEON_API Application::~Application( void )
@@ -41,6 +39,8 @@ namespace AEON
         for( auto& window : m_windows )
         {
             window->PollEvents( m_events );
+            window->Update();
+
         }
 
         if( m_windows.size() == 0 ) Close();
