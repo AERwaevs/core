@@ -19,7 +19,6 @@ namespace AEON
         virtual ~Application();
 
         static  Application&    instance()   { return *s_instance;   }
-                Renderer&       renderer()   { return *m_renderer;   }
                 Windows&        windows()    { return  m_windows;    }
                 Arguments       arguments()  { return  m_arguments;  }
                 String          name()       { return  m_name;       }
@@ -47,7 +46,6 @@ namespace AEON
     protected:
                 Arguments           m_arguments;
                 String              m_name;
-                Shared<Renderer>    m_renderer;
                 Windows             m_windows;
                 Events              m_events;
     private:

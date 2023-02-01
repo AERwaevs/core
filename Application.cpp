@@ -4,8 +4,8 @@
 
 namespace AEON
 {
-    AEON_API Application::Application( const String& name, Arguments        args )
-    : m_name( name ), m_arguments( args ), m_renderer( Renderer::create( Renderer::Vulkan ) )
+    AEON_API Application::Application( const String& name, Arguments args )
+    : m_name( name ), m_arguments( args )
     {
         Log::Init(  args.Count(), 
                     args.Values() );
