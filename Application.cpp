@@ -36,14 +36,13 @@ namespace AEON
 
     void AEON_API Application::Update()
     {
+        if( m_windows.size() == 0 ) Close();
+
         for( auto& window : m_windows )
         {
             window->PollEvents( m_events );
             window->Update();
-
         }
-
-        if( m_windows.size() == 0 ) Close();
     }
 
     void AEON_API Application::PollEvents()
