@@ -2,7 +2,7 @@
 
 namespace AEON
 {
-    class AEON_DLL Event : public Inherit< Object, Event >
+    class AEON_DLL Event : public Object
     {
     public:
         virtual ~Event() = default;

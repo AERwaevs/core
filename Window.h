@@ -27,7 +27,7 @@ struct AEON_DLL WindowProperties
     {};
 };
 
-class AEON_DLL Window : public Inherit< Object, Window >
+class AEON_DLL Window : public Object
 {
     using Properties = WindowProperties;
     using Viewport = Graphics::Viewport;
@@ -46,6 +46,7 @@ public:
     virtual bool                PollEvents( Events& events_list )   = 0;
             void                Update();
 protected:
+                                Window() : m_viewport{ Viewport::create() } {};
     virtual                     ~Window() = default;
 
 protected:

@@ -8,7 +8,7 @@ namespace AEON
 {
     class Window;   // forward declare
 
-    class AEON_DLL WindowEvent : public Inherit< Event, WindowEvent >
+    class AEON_DLL WindowEvent : public Event
     {
     public:
         WindowEvent( Window* window ) : m_window( window ) {};
@@ -18,18 +18,18 @@ namespace AEON
         Observer<Window>  m_window;
     };
 
-    class AEON_DLL WindowCloseEvent : public Inherit< WindowEvent, WindowCloseEvent >
+    class AEON_DLL WindowCloseEvent : public WindowEvent
     {
     public:
-        WindowCloseEvent( Window* window ) : Inherit( window ) {};
+        WindowCloseEvent( Window* window ) : WindowEvent( window ) {};
     };
 
-    class AEON_DLL WindowResizeEvent : public Inherit< WindowEvent, WindowResizeEvent >
+    class AEON_DLL WindowResizeEvent : public WindowEvent
     {
     public:
         WindowResizeEvent( Window* window, 
                            uint32_t size_x, uint32_t  size_y ) 
-        : Inherit( window ), m_size_x( size_x ), m_size_y( size_y )
+        : WindowEvent( window ), m_size_x( size_x ), m_size_y( size_y )
         {};
 
         uint32_t    x() const { return m_size_x; }
@@ -39,36 +39,36 @@ namespace AEON
         uint32_t    m_size_y;
     };
 
-    class AEON_DLL WindowMinimizeEvent : public Inherit< WindowEvent, WindowMinimizeEvent >
+    class AEON_DLL WindowMinimizeEvent : public WindowEvent
     {
     public:
-        WindowMinimizeEvent( Window* window ) : Inherit( window ) {};
+        WindowMinimizeEvent( Window* window ) : WindowEvent( window ) {};
     };
     
-    class AEON_DLL WindowMaximizeEvent : public Inherit< WindowEvent, WindowMaximizeEvent >
+    class AEON_DLL WindowMaximizeEvent : public WindowEvent
     {
     public:
-        WindowMaximizeEvent( Window* window ) : Inherit( window ) {};
+        WindowMaximizeEvent( Window* window ) : WindowEvent( window ) {};
     };
         
-    class AEON_DLL WindowFocusEvent : public Inherit< WindowEvent, WindowFocusEvent >
+    class AEON_DLL WindowFocusEvent : public WindowEvent
     {
     public:
-        WindowFocusEvent( Window* window ) : Inherit( window ) {};
+        WindowFocusEvent( Window* window ) : WindowEvent( window ) {};
     };
             
-    class AEON_DLL WindowUnfocusEvent : public Inherit< WindowEvent, WindowUnfocusEvent >
+    class AEON_DLL WindowUnfocusEvent : public WindowEvent
     {
     public:
-        WindowUnfocusEvent( Window* window ) : Inherit( window ) {};
+        WindowUnfocusEvent( Window* window ) : WindowEvent( window ) {};
     };
             
-    class AEON_DLL WindowMoveEvent : public Inherit< WindowEvent, WindowMoveEvent >
+    class AEON_DLL WindowMoveEvent : public WindowEvent
     {
     public:
         WindowMoveEvent( Window* window, 
                          uint32_t pos_x, uint32_t pos_y )
-        : Inherit( window), m_pos_x( pos_x ), m_pos_y( pos_y ) {};
+        : WindowEvent( window), m_pos_x( pos_x ), m_pos_y( pos_y ) {};
         
         uint32_t    x() const { return m_pos_x; }
         uint32_t    y() const { return m_pos_y; }
