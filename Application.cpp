@@ -49,19 +49,19 @@ namespace AEON
     {
         for( auto& event : m_events )
         {
-            event->Dispatch< WindowCloseEvent    >( BIND_WITH_ARGS( OnWindowClose    ) );
-            event->Dispatch< WindowResizeEvent   >( BIND_WITH_ARGS( OnWindowResize   ) );
-            event->Dispatch< WindowMinimizeEvent >( BIND_WITH_ARGS( OnWindowMinimize ) );
-            event->Dispatch< WindowFocusEvent    >( BIND_WITH_ARGS( OnWindowFocus    ) );
-            event->Dispatch< WindowUnfocusEvent  >( BIND_WITH_ARGS( OnWindowUnfocus  ) );
-            event->Dispatch< KeyDownEvent        >( BIND_WITH_ARGS( OnKeyDown        ) );
-            event->Dispatch< KeyUpEvent          >( BIND_WITH_ARGS( OnKeyUp          ) );
-            event->Dispatch< KeyHoldEvent        >( BIND_WITH_ARGS( OnKeyHold        ) );
-            event->Dispatch< MouseMoveEvent      >( BIND_WITH_ARGS( OnMouseMove      ) );
-            event->Dispatch< MouseScrollEvent    >( BIND_WITH_ARGS( OnMouseScroll    ) );
-            event->Dispatch< MouseDownEvent      >( BIND_WITH_ARGS( OnMouseDown      ) );
-            event->Dispatch< MouseDoubleEvent    >( BIND_WITH_ARGS( OnMouseDouble    ) );
-            event->Dispatch< MouseUpEvent        >( BIND_WITH_ARGS( OnMouseUp        ) );
+            event->Dispatch< WindowCloseEvent    >( this, &Application::OnWindowClose    );
+            event->Dispatch< WindowResizeEvent   >( this, &Application::OnWindowResize   );
+            event->Dispatch< WindowMinimizeEvent >( this, &Application::OnWindowMinimize );
+            event->Dispatch< WindowFocusEvent    >( this, &Application::OnWindowFocus    );
+            event->Dispatch< WindowUnfocusEvent  >( this, &Application::OnWindowUnfocus  );
+            event->Dispatch< KeyDownEvent        >( this, &Application::OnKeyDown        );
+            event->Dispatch< KeyUpEvent          >( this, &Application::OnKeyUp          );
+            event->Dispatch< KeyHoldEvent        >( this, &Application::OnKeyHold        );
+            event->Dispatch< MouseMoveEvent      >( this, &Application::OnMouseMove      );
+            event->Dispatch< MouseScrollEvent    >( this, &Application::OnMouseScroll    );
+            event->Dispatch< MouseDownEvent      >( this, &Application::OnMouseDown      );
+            event->Dispatch< MouseDoubleEvent    >( this, &Application::OnMouseDouble    );
+            event->Dispatch< MouseUpEvent        >( this, &Application::OnMouseUp        );
         }
         m_events.clear();
     }
