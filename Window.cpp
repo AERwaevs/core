@@ -1,6 +1,6 @@
 #include <Core/Window.h>
 
-namespace AEON
+namespace AEON::Graphics
 {
     
 void AEON_API Window::Update()

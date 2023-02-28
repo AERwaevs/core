@@ -4,7 +4,7 @@
 
 #include <Graphics/Viewport.h>
 
-namespace AEON
+namespace AEON::Graphics
 {
 
 struct AEON_DLL WindowProperties
@@ -30,7 +30,6 @@ struct AEON_DLL WindowProperties
 class AEON_DLL Window : public Object
 {
     using Properties = WindowProperties;
-    using Viewport = Graphics::Viewport;
 
 public:
     static  Shared<Window>      create( const Properties& props = Properties() );
@@ -46,8 +45,8 @@ public:
     virtual bool                PollEvents( Events& events_list )   = 0;
             void                Update();
 protected:
-                                Window() : m_viewport{ Viewport::create() } {};
-    virtual                     ~Window() = default;
+            Window() : m_viewport{ Viewport::create( this ) } {};
+    virtual ~Window() = default;
 
 protected:
             Events              m_events_buffer;

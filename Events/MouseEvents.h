@@ -9,7 +9,7 @@ namespace AEON
     class AEON_DLL MouseEvent : public WindowEvent
     {
     public:
-        MouseEvent( Window* window, 
+        MouseEvent( Graphics::Window* window, 
                     const int32_t& x, const int32_t& y ) 
         : WindowEvent( window ), m_pos_x( x ), m_pos_y( y )
         {};
@@ -24,7 +24,7 @@ namespace AEON
     class AEON_DLL MouseMoveEvent : public MouseEvent
     {
     public:
-        MouseMoveEvent( Window* window, 
+        MouseMoveEvent( Graphics::Window* window, 
                         const int32_t& x, const int32_t& y ) 
         : MouseEvent( window, x, y )
         {};
@@ -33,7 +33,7 @@ namespace AEON
     class AEON_DLL MouseScrollEvent : public MouseEvent
     {
     public:
-        MouseScrollEvent( Window* window, 
+        MouseScrollEvent( Graphics::Window* window, 
                           const int32_t& x, const int32_t& y,
                           const int32_t& delta_z ) 
         : MouseEvent( window, x, y ), m_delta_z( delta_z )
@@ -46,7 +46,7 @@ namespace AEON
     class AEON_DLL MouseButtonEvent : public MouseEvent
     {
     public:
-        MouseButtonEvent( Window* window, 
+        MouseButtonEvent( Graphics::Window* window, 
                           const int32_t& x, const int32_t& y, 
                           Mouse::Code button )
         : MouseEvent( window, x, y ), m_button( button ) 
@@ -60,7 +60,7 @@ namespace AEON
     class AEON_DLL MouseDownEvent : public MouseButtonEvent
     {
     public:
-        MouseDownEvent( Window* window, 
+        MouseDownEvent( Graphics::Window* window, 
                            const int32_t& x, const int32_t& y, 
                            Mouse::Code button ) 
         : MouseButtonEvent( window, x, y, button )
@@ -70,7 +70,7 @@ namespace AEON
     class AEON_DLL MouseUpEvent : public MouseButtonEvent
     {
     public:
-        MouseUpEvent( Window* window, 
+        MouseUpEvent( Graphics::Window* window, 
                             const int32_t& x, const int32_t& y, 
                             Mouse::Code button ) 
         : MouseButtonEvent( window, x, y, button )
@@ -80,7 +80,7 @@ namespace AEON
     class AEON_DLL MouseDoubleEvent : public MouseButtonEvent
     {
     public:
-        MouseDoubleEvent( Window* window, 
+        MouseDoubleEvent( Graphics::Window* window, 
                                  const int32_t& x, const int32_t& y, 
                                  Mouse::Code button )
         : MouseButtonEvent( window, x, y, button )

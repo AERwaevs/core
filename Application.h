@@ -13,6 +13,7 @@ namespace AEON
     class AEON_DLL Application
     {
         using Renderer = Graphics::Renderer;
+        using Windows  = Graphics::Windows;
 
     public:     
                 Application( const String& name = "AEON", Arguments args = Arguments() );

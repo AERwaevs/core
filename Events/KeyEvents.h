@@ -9,7 +9,7 @@ namespace AEON
     class AEON_DLL KeyEvent : public WindowEvent
     {
     public:
-        KeyEvent( Window* window, Key::ScanCode& code, Key::Code& key, Key::Mod& mod )
+        KeyEvent( Graphics::Window* window, Key::ScanCode& code, Key::Code& key, Key::Mod& mod )
         : WindowEvent( window ), m_code( code ), m_key( key ), m_mod( mod )
         {};
 
@@ -25,7 +25,7 @@ namespace AEON
     class AEON_DLL KeyDownEvent : public KeyEvent
     {
     public:
-        KeyDownEvent( Window* window, Key::ScanCode& code, Key::Code& key, Key::Mod& mod )
+        KeyDownEvent( Graphics::Window* window, Key::ScanCode& code, Key::Code& key, Key::Mod& mod )
         : KeyEvent( window, code, key, mod ) 
         {};
     };
@@ -33,7 +33,7 @@ namespace AEON
     class AEON_DLL KeyUpEvent : public KeyEvent
     {
     public:
-        KeyUpEvent( Window* window, Key::ScanCode& code, Key::Code& key, Key::Mod& mod )
+        KeyUpEvent( Graphics::Window* window, Key::ScanCode& code, Key::Code& key, Key::Mod& mod )
         : KeyEvent( window, code, key, mod ) 
         {};
     };
@@ -41,7 +41,7 @@ namespace AEON
     class AEON_DLL KeyHoldEvent : public KeyEvent
     {
     public:
-        KeyHoldEvent( Window* window, Key::ScanCode& code, Key::Code& key, Key::Mod& mod,
+        KeyHoldEvent( Graphics::Window* window, Key::ScanCode& code, Key::Code& key, Key::Mod& mod,
                       uint32_t repeat_count ) 
         : KeyEvent( window, code, key, mod ), m_repeat_count( repeat_count ) 
         {};
