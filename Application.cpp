@@ -1,3 +1,4 @@
+#include <Core/Log.h>
 #include <Core/Application.h>
 
 #include <Graphics/Renderer.h>

@@ -6,7 +6,7 @@
 
 namespace AEON
 {
-    class AEON_DLL KeyEvent : public WindowEvent
+    class KeyEvent : public WindowEvent
     {
     public:
         KeyEvent( Graphics::Window* window, Key::ScanCode& code, Key::Code& key, Key::Mod& mod )
@@ -22,7 +22,7 @@ namespace AEON
         Key::Mod        m_mod;
     };
 
-    class AEON_DLL KeyDownEvent : public KeyEvent
+    class KeyDownEvent : public KeyEvent
     {
     public:
         KeyDownEvent( Graphics::Window* window, Key::ScanCode& code, Key::Code& key, Key::Mod& mod )
@@ -30,7 +30,7 @@ namespace AEON
         {};
     };
 
-    class AEON_DLL KeyUpEvent : public KeyEvent
+    class KeyUpEvent : public KeyEvent
     {
     public:
         KeyUpEvent( Graphics::Window* window, Key::ScanCode& code, Key::Code& key, Key::Mod& mod )
@@ -38,7 +38,7 @@ namespace AEON
         {};
     };
 
-    class AEON_DLL KeyHoldEvent : public KeyEvent
+    class KeyHoldEvent : public KeyEvent
     {
     public:
         KeyHoldEvent( Graphics::Window* window, Key::ScanCode& code, Key::Code& key, Key::Mod& mod,

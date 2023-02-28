@@ -7,7 +7,7 @@
 namespace AEON::Graphics
 {
 
-struct AEON_DLL WindowProperties
+struct WindowProperties
 {
     String      m_name;
     bool        m_fullscreen;
@@ -27,7 +27,7 @@ struct AEON_DLL WindowProperties
     {};
 };
 
-class AEON_DLL Window : public Object
+class Window : public Object< Window >
 {
     using Properties = WindowProperties;
 

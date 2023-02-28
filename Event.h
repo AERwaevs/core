@@ -1,8 +1,10 @@
 #pragma once
 
+#include <Base/Base.h>
+
 namespace AEON
 {
-    class AEON_DLL Event : public Object
+    class Event : public Object< Event >
     {
     public:
         virtual ~Event() = default;

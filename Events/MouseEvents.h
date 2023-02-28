@@ -6,7 +6,7 @@
 
 namespace AEON
 {
-    class AEON_DLL MouseEvent : public WindowEvent
+    class MouseEvent : public WindowEvent
     {
     public:
         MouseEvent( Graphics::Window* window, 
@@ -21,7 +21,7 @@ namespace AEON
         int32_t m_pos_y;
     };
 
-    class AEON_DLL MouseMoveEvent : public MouseEvent
+    class MouseMoveEvent : public MouseEvent
     {
     public:
         MouseMoveEvent( Graphics::Window* window, 
@@ -30,7 +30,7 @@ namespace AEON
         {};
     };
 
-    class AEON_DLL MouseScrollEvent : public MouseEvent
+    class MouseScrollEvent : public MouseEvent
     {
     public:
         MouseScrollEvent( Graphics::Window* window, 
@@ -43,7 +43,7 @@ namespace AEON
         int32_t m_delta_z;
     };
 
-    class AEON_DLL MouseButtonEvent : public MouseEvent
+    class MouseButtonEvent : public MouseEvent
     {
     public:
         MouseButtonEvent( Graphics::Window* window, 
@@ -57,7 +57,7 @@ namespace AEON
         Mouse::Code m_button;
     };
     
-    class AEON_DLL MouseDownEvent : public MouseButtonEvent
+    class MouseDownEvent : public MouseButtonEvent
     {
     public:
         MouseDownEvent( Graphics::Window* window, 
@@ -67,7 +67,7 @@ namespace AEON
         {};
     };
         
-    class AEON_DLL MouseUpEvent : public MouseButtonEvent
+    class MouseUpEvent : public MouseButtonEvent
     {
     public:
         MouseUpEvent( Graphics::Window* window, 
@@ -77,7 +77,7 @@ namespace AEON
         {};
     };
 
-    class AEON_DLL MouseDoubleEvent : public MouseButtonEvent
+    class MouseDoubleEvent : public MouseButtonEvent
     {
     public:
         MouseDoubleEvent( Graphics::Window* window, 

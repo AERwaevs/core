@@ -10,7 +10,7 @@
 
 namespace AEON
 {
-    class AEON_DLL Application
+    class Application
     {
         using Renderer = Graphics::Renderer;
         using Windows  = Graphics::Windows;

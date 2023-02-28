@@ -11,7 +11,7 @@ namespace AEON
         class Window;   // forward declare
     }
 
-    class AEON_DLL WindowEvent : public Event
+    class WindowEvent : public Event
     {
     public:
         WindowEvent( Graphics::Window* window ) : m_window( window ) {};
@@ -21,13 +21,13 @@ namespace AEON
         Observer<Graphics::Window>  m_window;
     };
 
-    class AEON_DLL WindowCloseEvent : public WindowEvent
+    class WindowCloseEvent : public WindowEvent
     {
     public:
         WindowCloseEvent( Graphics::Window* window ) : WindowEvent( window ) {};
     };
 
-    class AEON_DLL WindowResizeEvent : public WindowEvent
+    class WindowResizeEvent : public WindowEvent
     {
     public:
         WindowResizeEvent( Graphics::Window* window, 
@@ -42,31 +42,31 @@ namespace AEON
         uint32_t    m_size_y;
     };
 
-    class AEON_DLL WindowMinimizeEvent : public WindowEvent
+    class WindowMinimizeEvent : public WindowEvent
     {
     public:
         WindowMinimizeEvent( Graphics::Window* window ) : WindowEvent( window ) {};
     };
     
-    class AEON_DLL WindowMaximizeEvent : public WindowEvent
+    class WindowMaximizeEvent : public WindowEvent
     {
     public:
         WindowMaximizeEvent( Graphics::Window* window ) : WindowEvent( window ) {};
     };
         
-    class AEON_DLL WindowFocusEvent : public WindowEvent
+    class WindowFocusEvent : public WindowEvent
     {
     public:
         WindowFocusEvent( Graphics::Window* window ) : WindowEvent( window ) {};
     };
             
-    class AEON_DLL WindowUnfocusEvent : public WindowEvent
+    class WindowUnfocusEvent : public WindowEvent
     {
     public:
         WindowUnfocusEvent( Graphics::Window* window ) : WindowEvent( window ) {};
     };
             
-    class AEON_DLL WindowMoveEvent : public WindowEvent
+    class WindowMoveEvent : public WindowEvent
     {
     public:
         WindowMoveEvent( Graphics::Window* window, 
