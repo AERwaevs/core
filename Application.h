@@ -6,7 +6,7 @@
 #include <Core/Events/MouseEvents.h>
 
 #include <Graphics/Renderer.h>
-#include <Core/Window.h>
+#include <Graphics/Window.h>
 
 namespace AEON
 {
