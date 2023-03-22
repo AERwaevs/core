@@ -1,9 +1,10 @@
 #pragma once
 
-#include <Core/Arguments.h>
-#include <Core/Events/WindowEvents.h>
-#include <Core/Events/KeyEvents.h>
-#include <Core/Events/MouseEvents.h>
+#include "Arguments.h"
+#include "Layer.h"
+#include "Events/WindowEvents.h"
+#include "Events/KeyEvents.h"
+#include "Events/MouseEvents.h"
 
 #include <Graphics/Renderer.h>
 #include <Graphics/Window.h>

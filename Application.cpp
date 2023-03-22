@@ -1,8 +1,4 @@
-#include <Base/log.h>
-
-#include <Core/Application.h>
-
-#include <Graphics/Renderer.h>
+#include "Application.h"
 
 namespace AEON
 {
