@@ -14,23 +14,23 @@ namespace AEON
     class Arguments
     {
         public:
-            Arguments() : m_argc( nullptr ), m_argv( nullptr ) {};
-            Arguments( int* argc, char** argv ) : m_argc( argc ), m_argv( argv ){};
+            Arguments() : _argc( nullptr ), _argv( nullptr ) {};
+            Arguments( int* argc, char** argv ) : _argc( argc ), _argv( argv ){};
             
-                    int&    Count()                         { return *m_argc;   }
-                    char**  Values()                        { return m_argv;    }
+                    int&    Count()                         { return *_argc;   }
+                    char**  Values()                        { return _argv;    }
             const   char*   operator[]( size_t i )          { return Count() >= i 
-                                                                     ? m_argv[i]
+                                                                     ? _argv[i]
                                                                      : nullptr; }
 //                    void    Remove( size_t i, size_t num)
 //                            {
-//                                if( i >= *m_argc ) return;
+//                                if( i >= *_argc ) return;
 //
 //                                int 
 //                            }
 
         protected:
-            int*    m_argc;
-            char**  m_argv;
+            int*    _argc;
+            char**  _argv;
     };
 }

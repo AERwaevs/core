@@ -11,14 +11,14 @@ namespace AEON
     public:
         MouseEvent( Graphics::Window* window, 
                     const int32_t& x, const int32_t& y ) 
-        : WindowEvent( window ), m_pos_x( x ), m_pos_y( y )
+        : WindowEvent( window ), _pos_x( x ), _pos_y( y )
         {};
 
-        int32_t x() const { return m_pos_x;  }
-        int32_t y() const { return m_pos_y;  }
+        int32_t x() const { return _pos_x;  }
+        int32_t y() const { return _pos_y;  }
     private:
-        int32_t m_pos_x;
-        int32_t m_pos_y;
+        int32_t _pos_x;
+        int32_t _pos_y;
     };
 
     class MouseMoveEvent : public MouseEvent
@@ -36,11 +36,11 @@ namespace AEON
         MouseScrollEvent( Graphics::Window* window, 
                           const int32_t& x, const int32_t& y,
                           const int32_t& delta_z ) 
-        : MouseEvent( window, x, y ), m_delta_z( delta_z )
+        : MouseEvent( window, x, y ), _delta_z( delta_z )
         {};
-        int32_t z() const { return m_delta_z; }
+        int32_t z() const { return _delta_z; }
     private:
-        int32_t m_delta_z;
+        int32_t _delta_z;
     };
 
     class MouseButtonEvent : public MouseEvent
@@ -49,12 +49,12 @@ namespace AEON
         MouseButtonEvent( Graphics::Window* window, 
                           const int32_t& x, const int32_t& y, 
                           Mouse::Code button )
-        : MouseEvent( window, x, y ), m_button( button ) 
+        : MouseEvent( window, x, y ), _button( button ) 
         {};
         
-        Mouse::Code button() const { return m_button; }
+        Mouse::Code button() const { return _button; }
     private:
-        Mouse::Code m_button;
+        Mouse::Code _button;
     };
     
     class MouseDownEvent : public MouseButtonEvent

@@ -10,16 +10,16 @@ namespace AEON
     {
     public:
         KeyEvent( Graphics::Window* window, Key::ScanCode& code, Key::Code& key, Key::Mod& mod )
-        : WindowEvent( window ), m_code( code ), m_key( key ), m_mod( mod )
+        : WindowEvent( window ), _code( code ), _key( key ), _mod( mod )
         {};
 
-        Key::ScanCode   code() const { return m_code; }
-        Key::Code       key()  const { return m_key; }
-        Key::Mod        mod()  const { return m_mod; }
+        Key::ScanCode   code() const { return _code; }
+        Key::Code       key()  const { return _key; }
+        Key::Mod        mod()  const { return _mod; }
     private:
-        Key::ScanCode   m_code;
-        Key::Code       m_key;
-        Key::Mod        m_mod;
+        Key::ScanCode   _code;
+        Key::Code       _key;
+        Key::Mod        _mod;
     };
 
     class KeyDownEvent : public KeyEvent
@@ -42,12 +42,12 @@ namespace AEON
     {
     public:
         KeyHoldEvent( Graphics::Window* window, Key::ScanCode& code, Key::Code& key, Key::Mod& mod,
-                      uint32_t repeat_count ) 
-        : KeyEvent( window, code, key, mod ), m_repeat_count( repeat_count ) 
+                      uint32_t repeats ) 
+        : KeyEvent( window, code, key, mod ), _repeats( repeats )
         {};
 
-        uint32_t repeats() const { return m_repeat_count; }
+        uint32_t repeats() const { return _repeats; }
     private:
-        uint32_t m_repeat_count;
+        uint32_t _repeats;
     };
 }

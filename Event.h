@@ -9,16 +9,20 @@ namespace AEON
     public:
         virtual ~Event() = default;
 
+        bool handled() const { return _handled; }
+
         template< typename E, typename T, typename F > 
         bool Dispatch( const T& target, const F& function )
         {
-            return m_handled |= typeid( *this ) == typeid( E )
-                              ? (target->*function)( static_cast<E&>(*this) )
-                              : false;
-        };
+            return _handled |= typeid( *this ) == typeid( E )
+                            ? (target->*function)( static_cast<E&>(*this) )
+                            : false;
+        }
+
     private:
-        bool      m_handled = false;
+        bool      _handled = false;
     };
 
-    using Events = List<Shared<Event>>;
+    using Events = List<ref_ptr<Event>>;
+
 }

@@ -21,9 +21,8 @@ namespace AEON
         virtual ~Application();
 
         static  Application&    instance()   { return *s_instance;   }
-                Windows&        windows()    { return  m_windows;    }
-                Arguments       arguments()  { return  m_arguments;  }
-                String          name()       { return  m_name;       }
+                Arguments       arguments()  { return  _arguments;  }
+                String          name()       { return  _name;       }
     protected:
                 void            Close();
         virtual void            Update();
@@ -46,14 +45,14 @@ namespace AEON
     private:
         friend  int             EntryPoint( int argc, char** argv );
     protected:
-                Arguments           m_arguments;
-                String              m_name;
-                Windows             m_windows;
-                Events              m_events;
+                Arguments           _arguments;
+                String              _name;
+                Windows             _windows;
+                Events              _events;
     private:
-                bool                m_running       = true;
-                bool                m_background    = false;
-                bool                m_minimized     = false;
+                bool                _running       = true;
+                bool                _background    = false;
+                bool                _minimized     = false;
 
         static inline Application*  s_instance;
     };
