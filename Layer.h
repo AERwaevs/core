@@ -7,7 +7,7 @@
 namespace AEON
 {
 
-class Layer : public Object< Layer >
+class Layer : public Object<>
 {
 public:
             Layer( const std::string& name = "Layer" ) : _name( name ) {};

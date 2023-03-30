@@ -4,7 +4,7 @@
 
 namespace AEON
 {
-    class Event : public Object< Event >
+    class Event : public Object<>
     {
     public:
         virtual ~Event() = default;
