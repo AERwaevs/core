@@ -2,6 +2,7 @@
 
 #include "Arguments.h"
 #include "Layer.h"
+#include "Event.h"
 #include "Events/WindowEvents.h"
 #include "Events/KeyEvents.h"
 #include "Events/MouseEvents.h"
@@ -11,7 +12,7 @@
 
 namespace AEON
 {
-    class Application
+    class Application : public IEventListener
     {
         using Renderer = Graphics::Renderer;
         using Windows  = Graphics::Windows;
@@ -49,6 +50,7 @@ namespace AEON
                 String              _name;
                 Windows             _windows;
                 Events              _events;
+                LayerStack          _layers;
     private:
                 bool                _running       = true;
                 bool                _background    = false;

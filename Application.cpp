@@ -3,7 +3,7 @@
 namespace AEON
 {
     AEON_API Application::Application( const String& name, Arguments args )
-    : m_name( name ), m_arguments( args )
+    : _name( name ), _arguments( args )
     {
         Log::Init(  args.Count(), 
                     args.Values() );
@@ -14,38 +14,38 @@ namespace AEON
 
     AEON_API Application::~Application( void )
     {
-        if( m_windows.size() > 0 ) m_windows.clear();
-        if( m_events.size()  > 0 ) m_events.clear();
+        if( _layers.size() > 0 ) _layers.clear();
+        if( _events.size() > 0 ) _events.clear();
     }
 
     void AEON_API Application::Run()
     {
-        while( m_running == true )
+        while( _running == true )
         {
-            Update();
             PollEvents();
+            Update();
         }
     }
 
     void AEON_API Application::Close()
     {
-        m_running = false;
+        _running = false;
     }
 
     void AEON_API Application::Update()
     {
-        if( m_windows.size() == 0 ) Close();
-
-        for( auto& window : m_windows )
+        for( const auto& layer : _layers )
         {
-            window->PollEvents( m_events );
-            window->Update();
+            layer->PollEvents( _events );
+            layer->OnUpdate();
         }
+
+        if( _layers.size() == 0 ) Close();
     }
 
     void AEON_API Application::PollEvents()
     {
-        for( auto& event : m_events )
+        for( auto& event : _events )
         {
             event->Dispatch< WindowCloseEvent    >( this, &Application::OnWindowClose    );
             event->Dispatch< WindowResizeEvent   >( this, &Application::OnWindowResize   );
@@ -61,7 +61,7 @@ namespace AEON
             event->Dispatch< MouseDoubleEvent    >( this, &Application::OnMouseDouble    );
             event->Dispatch< MouseUpEvent        >( this, &Application::OnMouseUp        );
         }
-        m_events.clear();
+        _events.clear();
     }
 
     bool AEON_API Application::OnKeyDown( KeyDownEvent& event )
@@ -106,7 +106,6 @@ namespace AEON
 
     bool AEON_API Application::OnWindowClose( WindowCloseEvent& event )
     {
-        m_windows.remove( event.window() );
         return true;
     }
   
@@ -114,29 +113,29 @@ namespace AEON
     {
         if( event.x() == 0 || event.y() == 0 )
         {
-            m_minimized     = true;
-            m_background    = true;
+            _minimized     = true;
+            _background    = true;
         }
         return true;
     }
   
     bool AEON_API Application::OnWindowMinimize( WindowMinimizeEvent& event )
     {
-        m_minimized     = true;
-        m_background    = true;
+        _minimized     = true;
+        _background    = true;
         return true;
     }
 
     bool AEON_API Application::OnWindowFocus( WindowFocusEvent& event )
     {
-        m_minimized     = false;
-        m_background    = false;
+        _minimized     = false;
+        _background    = false;
         return true;
     }
 
     bool AEON_API Application::OnWindowUnfocus( WindowUnfocusEvent& event )
     {
-        m_background    = true;
+        _background    = true;
         return true;
     }
 }

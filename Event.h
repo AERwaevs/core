@@ -1,10 +1,10 @@
 #pragma once
 
-#include <Base/Base.h>
+#include "../Base/Base.h"
 
 namespace AEON
 {
-    class Event : public Object<>
+    class Event : public Object
     {
     public:
         virtual ~Event() = default;
@@ -24,5 +24,4 @@ namespace AEON
     };
 
     using Events = List<ref_ptr<Event>>;
-
 }
