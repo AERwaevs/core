@@ -1,5 +1,7 @@
 #include "Application.h"
 
+#include "Events/ApplicationEvents.h"
+
 namespace AEON
 {
     AEON_API Application::Application( const String& name, Arguments args )
@@ -14,7 +16,8 @@ namespace AEON
 
     AEON_API Application::~Application( void )
     {
-        if( _layers.size() > 0 ) _layers.clear();
+        //if( _layers.size() > 0 ) _layers.clear();
+        AE_WARN_IF( !_events.empty(), "Unhandled events: %llu", _events.size() );
         if( _events.size() > 0 ) _events.clear();
     }
 
@@ -27,20 +30,21 @@ namespace AEON
         }
     }
 
-    void AEON_API Application::Close()
-    {
-        _running = false;
-    }
-
     void AEON_API Application::Update()
     {
-        for( const auto& layer : _layers )
-        {
-            layer->PollEvents( _events );
-            layer->OnUpdate();
-        }
+        //for( const auto& layer : _layers )
+        //{
+        //    layer->PollEvents( _events );
+        //    layer->OnUpdate();
+        //}
+        //if( _layers.size() == 0 ) Close();
 
-        if( _layers.size() == 0 ) Close();
+        for( const auto& window : _windows )
+        {
+            window->PollEvents( _events, true );
+            window->Update();
+        }
+        if( _windows.empty() ) Close();
     }
 
     void AEON_API Application::PollEvents()
@@ -61,7 +65,8 @@ namespace AEON
             event->Dispatch< MouseDoubleEvent    >( this, &Application::OnMouseDouble    );
             event->Dispatch< MouseUpEvent        >( this, &Application::OnMouseUp        );
         }
-        _events.clear();
+
+        return _events.clear();
     }
 
     bool AEON_API Application::OnKeyDown( KeyDownEvent& event )
@@ -108,34 +113,31 @@ namespace AEON
     {
         return true;
     }
-  
+
     bool AEON_API Application::OnWindowResize( WindowResizeEvent& event )
     {
-        if( event.x() == 0 || event.y() == 0 )
+        if( event.width() == 0 || event.height() == 0 )
         {
-            _minimized     = true;
-            _background    = true;
+            _background = std::all_of( _windows.begin(), _windows.end(), []( const auto& w ){ return w->minimized(); } );
         }
         return true;
     }
   
     bool AEON_API Application::OnWindowMinimize( WindowMinimizeEvent& event )
     {
-        _minimized     = true;
-        _background    = true;
+        _background = std::all_of( _windows.begin(), _windows.end(), []( const auto& w ){ return w->minimized(); } );
         return true;
     }
 
     bool AEON_API Application::OnWindowFocus( WindowFocusEvent& event )
     {
-        _minimized     = false;
         _background    = false;
         return true;
     }
 
     bool AEON_API Application::OnWindowUnfocus( WindowUnfocusEvent& event )
     {
-        _background    = true;
+        _background = std::all_of( _windows.begin(), _windows.end(), []( const auto& w ){ return w->minimized(); } );
         return true;
     }
 }

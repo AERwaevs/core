@@ -4,9 +4,8 @@
 
 namespace AEON
 {
-    class Event : public Object
+    struct Event : public Object
     {
-    public:
         virtual ~Event() = default;
 
         bool handled() const { return _handled; }
@@ -14,9 +13,12 @@ namespace AEON
         template< typename E, typename T, typename F > 
         bool Dispatch( const T& target, const F& function )
         {
-            return _handled |= typeid( *this ) == typeid( E )
-                            ? (target->*function)( static_cast<E&>(*this) )
-                            : false;
+            if( typeid( *this ) != typeid( E ) ) return false;
+            AE_INFO( "Dispatching %s to %s", type_name( static_cast<E&>(*this) ), type_name( function ) );
+
+            _handled |= (target->*function)( static_cast<E&>(*this) );
+            AE_WARN_IF( !_handled, "Unhandled %s", type_name( static_cast<E&>(*this) ) );
+            return _handled;
         }
 
     private:

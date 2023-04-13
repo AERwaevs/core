@@ -6,77 +6,68 @@
 
 namespace AEON
 {
-    namespace Graphics
-    {
-        class Window;   // forward declare
-    }
-
-    class WindowEvent : public Event
-    {
-    public:
-        WindowEvent( Graphics::Window* window ) : _window( window ) {};
-        
-        Observer<Graphics::Window>  window() const { return _window; }
-    private:
-        Observer<Graphics::Window>  _window;
-    };
-
-    class WindowCloseEvent : public WindowEvent
-    {
-    public:
-        WindowCloseEvent( Graphics::Window* window ) : WindowEvent( window ) {};
-    };
-
-    class WindowResizeEvent : public WindowEvent
-    {
-    public:
-        WindowResizeEvent( Graphics::Window* window, 
-                           uint32_t size_x, uint32_t  size_y ) 
-        : WindowEvent( window ), _size_x( size_x ), _size_y( size_y )
-        {};
-
-        uint32_t    x() const { return _size_x; }
-        uint32_t    y() const { return _size_y; }
-    private:
-        uint32_t    _size_x;
-        uint32_t    _size_y;
-    };
-
-    class WindowMinimizeEvent : public WindowEvent
-    {
-    public:
-        WindowMinimizeEvent( Graphics::Window* window ) : WindowEvent( window ) {};
-    };
     
-    class WindowMaximizeEvent : public WindowEvent
-    {
-    public:
-        WindowMaximizeEvent( Graphics::Window* window ) : WindowEvent( window ) {};
-    };
-        
-    class WindowFocusEvent : public WindowEvent
-    {
-    public:
-        WindowFocusEvent( Graphics::Window* window ) : WindowEvent( window ) {};
-    };
-            
-    class WindowUnfocusEvent : public WindowEvent
-    {
-    public:
-        WindowUnfocusEvent( Graphics::Window* window ) : WindowEvent( window ) {};
-    };
-            
-    class WindowMoveEvent : public WindowEvent
-    {
-    public:
-        WindowMoveEvent( Graphics::Window* window, 
-                         uint32_t pos_x, uint32_t pos_y )
-        : WindowEvent( window), _pos_x( pos_x ), _pos_y( pos_y ) {};
-        
-        uint32_t    x() const { return _pos_x; }
-        uint32_t    y() const { return _pos_y; }
-    private:
-        uint32_t    _pos_x;
-        uint32_t    _pos_y;
-    };
+namespace Graphics
+{
+    class Window;   // forward declare
 }
+
+struct WindowEvent : public Event, ITypeInfo< WindowEvent >
+{
+    WindowEvent( Graphics::Window* window ) : _window( window ) {};
+    
+    spy_ptr<Graphics::Window>  window() const { return _window; }
+private:
+    spy_ptr<Graphics::Window>  _window;
+};
+
+struct WindowCloseEvent : public WindowEvent, ITypeInfo< WindowCloseEvent >
+{
+    WindowCloseEvent( auto* window ) : WindowEvent( window ) {};
+};
+        
+struct WindowMoveEvent : public WindowEvent, ITypeInfo< WindowMoveEvent >
+{
+    WindowMoveEvent( auto* window, uint32_t pos_x, uint32_t pos_y )
+    : WindowEvent( window ), _x( pos_x ), _y( pos_y ) {};
+    
+    uint32_t x() const { return _x; }
+    uint32_t y() const { return _y; }
+private:
+    uint32_t _x;
+    uint32_t _y;
+};
+
+struct WindowResizeEvent : public WindowEvent, ITypeInfo< WindowResizeEvent >
+{
+    WindowResizeEvent( auto* window, uint32_t width, uint32_t height )
+    : WindowEvent( window ), _width( width ), _height( height ) {};
+
+    uint32_t    width()  const { return _width; }
+    uint32_t    height() const { return _height; }
+private:
+    uint32_t    _width;
+    uint32_t    _height;
+};
+
+struct WindowMinimizeEvent : public WindowEvent, ITypeInfo< WindowMinimizeEvent >
+{
+    WindowMinimizeEvent( auto* window ) : WindowEvent( window ) {};
+};
+
+struct WindowMaximizeEvent : public WindowEvent, ITypeInfo< WindowMaximizeEvent >
+{
+    WindowMaximizeEvent( auto* window ) : WindowEvent( window ) {};
+};
+    
+struct WindowFocusEvent : public WindowEvent, ITypeInfo< WindowFocusEvent >
+{
+    WindowFocusEvent( auto* window ) : WindowEvent( window ) {};
+};
+        
+struct WindowUnfocusEvent : public WindowEvent, ITypeInfo< WindowUnfocusEvent >
+{
+    WindowUnfocusEvent( auto* window ) : WindowEvent( window ) {};
+};
+
+} // namespace AEON

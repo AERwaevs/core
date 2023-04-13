@@ -5,31 +5,31 @@
 
 namespace AEON
 {
-    
+
+template< typename T >
 struct IEventListener
 {
-    template< typename T >
-    requires std::derived_from< T, Event > || std::common_reference_with< T, Event >
-    inline  void SendEvent( T* event ) { _events.emplace_back( event ); };
-    virtual bool PollEvents( Events& unhandled )
+    template< typename E >
+    requires std::derived_from< E, Event > || std::common_reference_with< E, Event >
+    inline  void SendEvent( E&& event ) { _events.emplace_back( event ); };
+
+    virtual bool PollEvents( Events& poll_to, bool clear_unhandled = true )
     {
-        if( _events.size() > 0 )
-        {
-            _events.remove_if( []( const auto& e ){ return e->handled(); } );
-            unhandled.splice( unhandled.end(), _events );
-            _events.clear();
-            return true;
-        }
-        else return false;
+        if( _events.empty() ) return false;
+
+        _events.remove_if( []( const auto& e ){ return e->handled(); } );
+        poll_to.splice( poll_to.end(), _events );
+        if( clear_unhandled ) _events.clear();
+        return _events.empty();
     };
 protected:
-    template< typename T >
-    requires std::derived_from< T, Event > || std::common_reference_with< T, Event >
-    bool OnEvent( T& event ) 
+    template< typename E, typename F >
+    requires std::invocable< F, E >
+    bool OnEvent( E& event ) 
     {
-        return false;
+        return F(E);
     }
-
+    
 protected:
     Events _events;
 };

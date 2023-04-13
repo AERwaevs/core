@@ -8,7 +8,8 @@
 namespace AEON
 {
 
-class Layer : public virtual Object, public IEventListener
+class Layer : public virtual Object, public Implements< Layer, IEventListener >
+
 {
 public:
             Layer( const std::string& name = "Layer" ) : _name( name ) {};
@@ -29,6 +30,8 @@ using Layers = std::vector<ref_ptr<Layer>>;
 class LayerStack
 {
 public:
+    friend class Application;
+    
     LayerStack() = default;
     LayerStack( Layers layers ) : _layers{ layers } {}
     ~LayerStack() { for( auto& layer : _layers ){ layer->OnDetach(); } }
@@ -70,6 +73,19 @@ public:
         {
             return typeid(T) == typeid(layer.get());
         } );
+        if( it == _layers.end() ) return;
+        else
+        {
+            it->get()->OnDetach();
+            _layers.erase( it );
+        }
+    }
+
+    template< typename T >
+    requires std::derived_from< T, Layer >
+    void PopLayer( const ref_ptr<T>& layer )
+    {
+        auto it = std::find( _layers.begin(), _layers.end(), layer );
         if( it == _layers.end() ) return;
         else
         {
