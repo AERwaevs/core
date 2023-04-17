@@ -13,7 +13,3 @@ target_precompile_headers(  aeon-core   REUSE_FROM  aeon-base                   
 target_link_libraries(      aeon-core   PUBLIC      loguru
                                                     aeon-base
                                                     aeon-graphics                       )
-
-if( WIN32 )
-    target_link_libraries( aeon-core PUBLIC aeon-platform-windows )
-endif()
