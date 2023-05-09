@@ -12,7 +12,7 @@
 
 namespace AEON
 {
-    class Application : protected Implements< Application, IEventListener >
+    class Application : protected Interfaces< Application, IEventListener >
     {
         using Renderer = Graphics::Renderer;
         using Windows  = Graphics::Windows;
@@ -57,3 +57,6 @@ namespace AEON
         static inline Application*  s_instance;
     };
 }
+
+//* To be defined in a client program, returning the client application----------------------------
+extern AEON::Application* CreateApplication( AEON::Arguments args );

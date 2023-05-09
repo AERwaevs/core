@@ -1,15 +1,24 @@
-add_library(                aeon-core   SHARED      Application.cpp EntryPoint.h )
+# cmake -------------------------------------------------------------------------------------------
+cmake_minimum_required( VERSION 3.2.0 )
+
+set( CMAKE_CXX_STANDARD          20  )
+set( CMAKE_CXX_STANDARD_REQUIRED ON  )
+set( CMAKE_CXX_EXTENSIONS        OFF )
+# AEON::Core ------------------------------------------------------------------------------------------
+set( CORE_LIB ${CMAKE_CURRENT_SOURCE_DIR}/lib )
+set( CORE_INC ${CMAKE_CURRENT_SOURCE_DIR}/inc )
+set( CORE_SRC ${CMAKE_CURRENT_SOURCE_DIR}/src )
+
+add_library( aeon-core SHARED
+    ${CORE_SRC}/Application.cpp
+    ${CORE_SRC}/EntryPoint.h
+)
 add_dependencies( aeon-core
-    loguru
     aeon-base
     aeon-graphics
 )
-set_target_properties(      aeon-core   PROPERTIES  PROJECT_NAME                AEON
-                                                    POSITION_INDEPENDENT_CODE   TRUE    )
-target_include_directories( aeon-core   PRIVATE     ${AEON_DIR}
-                                        PUBLIC      ${CMAKE_CURRENT_SOURCE_DIR}         )
+target_include_directories( aeon-core PUBLIC ${CMAKE_CURRENT_SOURCE_DIR} )
 
-target_precompile_headers(  aeon-core   REUSE_FROM  aeon-base                     )
-target_link_libraries(      aeon-core   PUBLIC      loguru
-                                                    aeon-base
+target_precompile_headers(  aeon-core  PRIVATE ${HEADERS} ${STD_HEADERS} )
+target_link_libraries(      aeon-core   PUBLIC      aeon-base
                                                     aeon-graphics                       )

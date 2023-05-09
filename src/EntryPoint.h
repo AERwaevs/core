@@ -1,9 +1,6 @@
 #include <Core/Arguments.h>
 #include <Core/Application.h>
 
-//* To be defined in a client program, returning the client application----------------------------
-extern AEON::Application* CreateApplication( AEON::Arguments args );
-
 namespace AEON
 {
     inline int EntryPoint( int argc, char** argv )
