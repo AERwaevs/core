@@ -1,8 +1,7 @@
 #pragma once
 
 #include <Base/Base.h>
-
-#include "../Event.h"
+#include <Base/Event.h>
 
 namespace AEON
 {

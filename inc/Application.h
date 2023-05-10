@@ -1,14 +1,17 @@
 #pragma once
 
-#include "Arguments.h"
-#include "Layer.h"
-#include "Event.h"
-#include "EventListener.h"
-#include "Events/KeyEvents.h"
-#include "Events/MouseEvents.h"
+#include <Base/Event.h>
+#include <Base/EventListener.h>
+
+#include <Events/KeyEvents.h>
+#include <Events/MouseEvents.h>
+#include <Events/WindowEvents.h>
 
 #include <Graphics/Renderer.h>
 #include <Graphics/Window.h>
+
+#include "Arguments.h"
+#include "Layer.h"
 
 namespace AEON
 {
