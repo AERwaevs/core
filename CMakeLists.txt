@@ -15,10 +15,9 @@ add_library( aeon-core SHARED
 )
 add_dependencies( aeon-core
     aeon-base
+    aeon-input
     aeon-graphics
 )
-target_include_directories( aeon-core PUBLIC ${CMAKE_CURRENT_SOURCE_DIR} )
-
-target_precompile_headers(  aeon-core  PRIVATE ${HEADERS} ${STD_HEADERS} )
-target_link_libraries(      aeon-core   PUBLIC      aeon-base
-                                                    aeon-graphics                       )
+target_precompile_headers(  aeon-core PRIVATE ${HEADERS} ${STD_HEADERS} )
+target_include_directories( aeon-core PUBLIC  ${CORE_INC} PRIVATE ${BASE_INC} ${GRAPHICS_INC} )
+target_link_libraries(      aeon-core PRIVATE aeon-base aeon-graphics )
