@@ -1,6 +1,6 @@
-#include "Application.h"
+#include <Core/Application.h>
 
-#include "Events/ApplicationEvents.h"
+#include <Events/ApplicationEvents.h>
 
 namespace AEON
 {
@@ -16,8 +16,7 @@ namespace AEON
 
     AEON_API Application::~Application( void )
     {
-        //if( _layers.size() > 0 ) _layers.clear();
-        AE_WARN_IF( !_events.empty(), "Unhandled events: %llu", _events.size() );
+        AE_WARN_IF( !_events.empty(), "Unhandled events: %zu", _events.size() );
         if( _events.size() > 0 ) _events.clear();
     }
 
@@ -32,13 +31,6 @@ namespace AEON
 
     void AEON_API Application::Update()
     {
-        //for( const auto& layer : _layers )
-        //{
-        //    layer->PollEvents( _events );
-        //    layer->OnUpdate();
-        //}
-        //if( _layers.size() == 0 ) Close();
-
         for( const auto& window : _windows )
         {
             window->PollEvents( _events, true );

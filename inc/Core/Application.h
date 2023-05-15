@@ -52,7 +52,6 @@ namespace AEON
                 Arguments           _arguments;
                 String              _name;
                 Windows             _windows;
-                //LayerStack          _layers;
     private:
                 bool                _running       = true;
                 bool                _background    = false;
@@ -60,6 +59,3 @@ namespace AEON
         static inline Application*  s_instance;
     };
 }
-
-//* To be defined in a client program, returning the client application----------------------------
-extern AEON::Application* CreateApplication( AEON::Arguments args );
