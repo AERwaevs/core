@@ -20,6 +20,6 @@ set_target_properties( aeon-core
 target_include_directories( aeon-core 
     PUBLIC
         $<BUILD_INTERFACE:${CORE_INC}>
-	    $<INSTALL_INTERFACE:inc>
+	    $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
 )
 target_link_libraries(      aeon-core PRIVATE aeon-base aeon-input aeon-graphics )

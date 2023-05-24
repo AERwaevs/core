@@ -36,7 +36,6 @@ namespace AEON
             window->PollEvents( _events, true );
             window->Update();
         }
-        if( _windows.empty() ) Close();
     }
 
     void AEON_API Application::PollEvents()
@@ -103,15 +102,13 @@ namespace AEON
 
     bool AEON_API Application::OnWindowClose( WindowCloseEvent& event )
     {
+        _windows.remove( event.window().load() );
+        if( _windows.empty() ) Close();
         return true;
     }
 
     bool AEON_API Application::OnWindowResize( WindowResizeEvent& event )
     {
-        if( event.width() == 0 || event.height() == 0 )
-        {
-            _background = std::all_of( _windows.begin(), _windows.end(), []( const auto& w ){ return w->minimized(); } );
-        }
         return true;
     }
   
@@ -123,7 +120,7 @@ namespace AEON
 
     bool AEON_API Application::OnWindowFocus( WindowFocusEvent& event )
     {
-        _background    = false;
+        _background = false;
         return true;
     }
 
