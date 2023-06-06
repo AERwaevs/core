@@ -13,7 +13,7 @@
 #include "Arguments.h"
 #include "Layer.h"
 
-namespace AEON
+namespace aer
 {
     class Application : protected Interfaces< Application, IEventListener >
     {

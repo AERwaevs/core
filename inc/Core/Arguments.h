@@ -1,6 +1,6 @@
 #pragma once
 
-namespace AEON
+namespace aer
 {
     /*  Struct containing command-line arguments passed into AEON.dll 
         Provides an array operator to more easily iterate over arguments */ 

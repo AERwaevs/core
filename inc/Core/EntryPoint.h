@@ -3,7 +3,7 @@
 #include <Core/Application.h>
 #include <Core/Arguments.h>
 
-namespace AEON
+namespace aer
 {
 
 //* To be defined in a client program, returning the client application----------------------------
@@ -22,5 +22,5 @@ int EntryPoint( int argc, char** argv )
 
 int main( int argc, char** argv )
 {
-    return AEON::EntryPoint( argc, argv );
+    return aer::EntryPoint( argc, argv );
 }

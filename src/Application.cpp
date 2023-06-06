@@ -2,7 +2,7 @@
 
 #include <Events/ApplicationEvents.h>
 
-namespace AEON
+namespace aer
 {
     AEON_API Application::Application( const String& name, Arguments args )
     : _name( name ), _arguments( args )

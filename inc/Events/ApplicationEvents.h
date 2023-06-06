@@ -3,7 +3,7 @@
 #include <Base/Base.h>
 #include <Base/Event.h>
 
-namespace AEON
+namespace aer
 {
 
 class ApplicationEvent : public Event
@@ -16,4 +16,4 @@ class ApplicationCloseEvent : public ApplicationEvent
     
 };
 
-} // namespace AEON
+} // namespace aer
