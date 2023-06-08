@@ -11,7 +11,6 @@
 #include <Graphics/Window.h>
 
 #include "Arguments.h"
-#include "Layer.h"
 
 namespace aer
 {
