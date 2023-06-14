@@ -16,8 +16,8 @@ namespace aer
 {
     class Application : protected Interfaces< Application, IEventListener >
     {
-        using Renderer = Graphics::Renderer;
-        using Windows  = Graphics::Windows;
+        using Renderer = gfx::Renderer;
+        using Windows  = gfx::Windows;
 
     public:     
                 Application( const String& name = "AEON", Arguments args = Arguments() );
