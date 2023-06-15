@@ -7,8 +7,8 @@ namespace aer
     AEON_API Application::Application( const String& name, Arguments args )
     : _name( name ), _arguments( args )
     {
-        Log::Init( args.Count(), args.Values() );
-        Log::New( name );
+        log::internal::init( args.Count(), args.Values() );
+        log::internal::add_file( _name.c_str() );
         
         s_instance = this;
     }
