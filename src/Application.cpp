@@ -4,7 +4,7 @@
 
 namespace aer
 {
-    AEON_API Application::Application( const String& name, Arguments args )
+    AEON_API Application::Application( const std::string& name, Arguments args )
     : _name( name ), _arguments( args )
     {
         log::internal::init( args.Count(), args.Values() );

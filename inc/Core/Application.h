@@ -20,12 +20,12 @@ namespace aer
         using Windows  = gfx::Windows;
 
     public:     
-                Application( const String& name = "AEON", Arguments args = Arguments() );
+                Application( const std::string& name = "AEON", Arguments args = Arguments() );
         virtual ~Application();
 
         static  Application&    instance()   { return *s_instance;  }
                 Arguments       arguments()  { return  _arguments;  }
-                String          name()       { return  _name;       }
+                std::string          name()  { return  _name;       }
     protected:
         inline  void            Close()      { _running = false;    }
         virtual void            Update();
@@ -49,7 +49,7 @@ namespace aer
         friend  int             EntryPoint( int, char** );
     protected:
                 Arguments           _arguments;
-                String              _name;
+                std::string         _name;
                 Windows             _windows;
     private:
                 bool                _running       = true;
