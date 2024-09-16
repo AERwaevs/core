@@ -5,7 +5,7 @@
 
 namespace aer
 {
-    AEON_API Application::Application( const std::string& name, Arguments args )
+     Application::Application( const std::string& name, Arguments args )
     : _name( name ), _arguments( args )
     {
         log::internal::init( args.Count(), args.Values() );
@@ -14,13 +14,13 @@ namespace aer
         s_instance = this;
     }
 
-    AEON_API Application::~Application( void )
+     Application::~Application( void )
     {
         AE_WARN_IF( !_events.empty(), "Unhandled events: %zu", _events.size() );
         if( _events.size() > 0 ) _events.clear();
     }
 
-    void AEON_API Application::Run()
+    void  Application::Run()
     {
         while( _running == true )
         {
@@ -29,7 +29,7 @@ namespace aer
         }
     }
 
-    void AEON_API Application::Update()
+    void  Application::Update()
     {
         for( const auto& window : _windows )
         {
@@ -38,7 +38,7 @@ namespace aer
         }
     }
 
-    void AEON_API Application::PollEvents()
+    void  Application::PollEvents()
     {
         for( auto& event : _events )
         {
@@ -60,71 +60,71 @@ namespace aer
         return _events.clear();
     }
 
-    bool AEON_API Application::OnKeyDown( KeyDownEvent& event )
+    bool  Application::OnKeyDown( KeyDownEvent& event )
     {
         return true;
     }
 
-    bool AEON_API Application::OnKeyUp( KeyUpEvent& event )
+    bool  Application::OnKeyUp( KeyUpEvent& event )
     {
         return true;
     }
     
-    bool AEON_API Application::OnKeyHold( KeyHoldEvent& event )
+    bool  Application::OnKeyHold( KeyHoldEvent& event )
     {
         return true;
     }
     
-    bool AEON_API Application::OnMouseMove( MouseMoveEvent& event )
+    bool  Application::OnMouseMove( MouseMoveEvent& event )
     {
         return true;
     }
   
-    bool AEON_API Application::OnMouseScroll( MouseScrollEvent& event )
+    bool  Application::OnMouseScroll( MouseScrollEvent& event )
     {
         return true;
     }
 
-    bool AEON_API Application::OnMouseDown( MouseDownEvent& event )
+    bool  Application::OnMouseDown( MouseDownEvent& event )
     {
         return true;
     }
 
-    bool AEON_API Application::OnMouseDouble( MouseDoubleEvent& event )
+    bool  Application::OnMouseDouble( MouseDoubleEvent& event )
     {
         return true;
     }
     
-    bool AEON_API Application::OnMouseUp( MouseUpEvent& event )
+    bool  Application::OnMouseUp( MouseUpEvent& event )
     {
         return true;
     }
 
-    bool AEON_API Application::OnWindowClose( WindowCloseEvent& event )
+    bool  Application::OnWindowClose( WindowCloseEvent& event )
     {
         _windows.remove( event.window().load() );
         if( _windows.empty() ) Close();
         return true;
     }
 
-    bool AEON_API Application::OnWindowResize( WindowResizeEvent& event )
+    bool  Application::OnWindowResize( WindowResizeEvent& event )
     {
         return true;
     }
   
-    bool AEON_API Application::OnWindowMinimize( WindowMinimizeEvent& event )
+    bool  Application::OnWindowMinimize( WindowMinimizeEvent& event )
     {
         _background = std::all_of( _windows.begin(), _windows.end(), []( const auto& w ){ return w->minimized(); } );
         return true;
     }
 
-    bool AEON_API Application::OnWindowFocus( WindowFocusEvent& event )
+    bool  Application::OnWindowFocus( WindowFocusEvent& event )
     {
         _background = false;
         return true;
     }
 
-    bool AEON_API Application::OnWindowUnfocus( WindowUnfocusEvent& event )
+    bool  Application::OnWindowUnfocus( WindowUnfocusEvent& event )
     {
         _background = std::all_of( _windows.begin(), _windows.end(), []( const auto& w ){ return w->minimized(); } );
         return true;

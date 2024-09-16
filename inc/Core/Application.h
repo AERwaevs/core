@@ -20,7 +20,7 @@ namespace aer
         using Windows  = gfx::Windows;
 
     public:     
-                Application( const std::string& name = "AEON", Arguments args = Arguments() );
+                Application( const std::string& name = "AER", Arguments args = Arguments() );
         virtual ~Application();
 
         static  Application&    instance()   { return *s_instance;  }

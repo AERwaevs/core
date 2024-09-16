@@ -1,6 +1,6 @@
 # cmake -------------------------------------------------------------------------------------------
 cmake_minimum_required( VERSION 3.20 )
-# AEON::Core --------------------------------------------------------------------------------------
+# AER::Core --------------------------------------------------------------------------------------
 set( CORE_LIB ${CMAKE_CURRENT_SOURCE_DIR}/lib )
 set( CORE_INC ${CMAKE_CURRENT_SOURCE_DIR}/inc )
 set( CORE_SRC ${CMAKE_CURRENT_SOURCE_DIR}/src )

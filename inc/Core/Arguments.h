@@ -2,7 +2,7 @@
 
 namespace aer
 {
-    /*  Struct containing command-line arguments passed into AEON.dll 
+    /*  Struct containing command-line arguments passed into AER.dll 
         Provides an array operator to more easily iterate over arguments */ 
     //struct ApplicationArguments
     //{
