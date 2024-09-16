@@ -1,6 +1,7 @@
 #include <Core/Application.h>
-
 #include <Events/ApplicationEvents.h>
+
+#include <algorithm>
 
 namespace aer
 {
