@@ -14,7 +14,7 @@
 
 namespace aer
 {
-    class Application : protected Interfaces< Application, IEventListener >
+    class Application : protected IEventListener<Application>
     {
         using Renderer = gfx::Renderer;
         using Windows  = gfx::Windows;
