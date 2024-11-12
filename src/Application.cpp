@@ -114,7 +114,7 @@ namespace aer
   
     bool  Application::OnWindowMinimize( WindowMinimizeEvent& event )
     {
-        _background = std::all_of( _windows.begin(), _windows.end(), []( const auto& w ){ return w->minimized(); } );
+        _background = std::all_of( _windows.begin(), _windows.end(), []( const auto& w ){ return w->properties().minimized; } );
         return true;
     }
 
@@ -126,7 +126,7 @@ namespace aer
 
     bool  Application::OnWindowUnfocus( WindowUnfocusEvent& event )
     {
-        _background = std::all_of( _windows.begin(), _windows.end(), []( const auto& w ){ return w->minimized(); } );
+        _background = std::all_of( _windows.begin(), _windows.end(), []( const auto& w ){ return w->properties().minimized; } );
         return true;
     }
 }

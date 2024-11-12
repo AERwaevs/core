@@ -16,8 +16,8 @@ namespace aer
 {
     class Application : protected IEventListener<Application>
     {
-        using Renderer = gfx::Renderer;
-        using Windows  = gfx::Windows;
+        using Renderer = Renderer;
+        using Windows  = Windows;
 
     public:     
                 Application( const std::string& name = "AER", Arguments args = Arguments() );
