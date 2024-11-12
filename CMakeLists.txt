@@ -1,6 +1,43 @@
 # cmake -------------------------------------------------------------------------------------------
 cmake_minimum_required( VERSION 3.20 )
-# AER::Core --------------------------------------------------------------------------------------
+
+if(NOT DEFINED PROJECT_NAME)
+  set(NOT_SUBPROJECT ON)
+else()
+  set(NOT_SUBPROJECT OFF)
+endif()
+
+project( AER::Base
+    VERSION 0.1.0
+    LANGUAGES CXX
+)
+
+set( CMAKE_CXX_STANDARD          23  )
+set( CMAKE_CXX_STANDARD_REQUIRED ON  )
+set( CMAKE_CXX_EXTENSIONS        OFF )
+set( CMAKE_POSITION_INDEPENDENT_CODE ON )
+
+# FetchContent -----------------------------------------------------------------------------------
+include(FetchContent)
+set( FETCHCONTENT_QUIET FALSE )
+
+set( DOWNLOADS_DIR ${PROJECT_BINARY_DIR}/downloads )
+set( COMPONENTS_DIR ${PROJECT_BINARY_DIR}/components )
+set( FETCHCONTENT_BASE_DIR ${COMPONENTS_DIR} )
+
+if(NOT TARGET aer::base)
+    OPTION( BUILD_base "Build aer::base" ON )
+    if( ${BUILD_base} )
+        FetchContent_Declare( aer_base
+            GIT_REPOSITORY https://github.com/AERwaevs/base.git
+            GIT_TAG nodes
+            GIT_PROGRESS TRUE
+        )
+        FetchContent_MakeAvailable( aer_base )
+        set( aer_base_DEPENDENCY aer_base )
+    endif()
+endif()
+# AER::Core ---------------------------------------------------------------------------------------
 set( CORE_LIB ${CMAKE_CURRENT_SOURCE_DIR}/lib )
 set( CORE_INC ${CMAKE_CURRENT_SOURCE_DIR}/inc )
 set( CORE_SRC ${CMAKE_CURRENT_SOURCE_DIR}/src )
