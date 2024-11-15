@@ -28,13 +28,13 @@ set( FETCHCONTENT_BASE_DIR ${COMPONENTS_DIR} )
 if(NOT TARGET aer::base)
     OPTION( BUILD_base "Build aer::base" ON )
     if( ${BUILD_base} )
-        FetchContent_Declare( aer_base
+        FetchContent_Declare( base
             GIT_REPOSITORY https://github.com/AERwaevs/base.git
             GIT_TAG nodes
             GIT_PROGRESS TRUE
         )
-        FetchContent_MakeAvailable( aer_base )
-        set( aer_base_DEPENDENCY aer_base )
+        FetchContent_MakeAvailable( base )
+        set( base_DEPENDENCY base )
     endif()
 endif()
 # AER::Core ---------------------------------------------------------------------------------------
