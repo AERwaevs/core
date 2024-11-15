@@ -54,7 +54,7 @@ endif()
 if(NOT TARGET aer::graphics)
     OPTION( BUILD_graphics "Build aer::graphics" ON )
     if( ${BUILD_base} )
-        FetchContent_Declare( input
+        FetchContent_Declare( graphics
             GIT_REPOSITORY https://github.com/AERwaevs/graphics.git
             GIT_TAG main
             GIT_PROGRESS TRUE
