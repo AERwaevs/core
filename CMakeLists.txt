@@ -30,11 +30,37 @@ if(NOT TARGET aer::base)
     if( ${BUILD_base} )
         FetchContent_Declare( base
             GIT_REPOSITORY https://github.com/AERwaevs/base.git
-            GIT_TAG nodes
+            GIT_TAG main
             GIT_PROGRESS TRUE
         )
         FetchContent_MakeAvailable( base )
         set( base_DEPENDENCY base )
+    endif()
+endif()
+
+if(NOT TARGET aer::input)
+    OPTION( BUILD_input "Build aer::input" ON )
+    if( ${BUILD_base} )
+        FetchContent_Declare( input
+            GIT_REPOSITORY https://github.com/AERwaevs/input.git
+            GIT_TAG main
+            GIT_PROGRESS TRUE
+        )
+        FetchContent_MakeAvailable( input )
+        set( input_DEPENDENCY input )
+    endif()
+endif()
+
+if(NOT TARGET aer::graphics)
+    OPTION( BUILD_graphics "Build aer::graphics" ON )
+    if( ${BUILD_base} )
+        FetchContent_Declare( input
+            GIT_REPOSITORY https://github.com/AERwaevs/graphics.git
+            GIT_TAG main
+            GIT_PROGRESS TRUE
+        )
+        FetchContent_MakeAvailable( graphics )
+        set( graphics_DEPENDENCY graphics )
     endif()
 endif()
 # AER::Core ---------------------------------------------------------------------------------------
