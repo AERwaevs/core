@@ -46,7 +46,7 @@ if(NOT TARGET aer::input)
             GIT_TAG main
             GIT_PROGRESS TRUE
         )
-        FetchContent_MakeAvailable( input )
+        FetchContent_MakeAvailable( input ${base_DEPENDENCY}  )
         set( input_DEPENDENCY input )
     endif()
 endif()
@@ -59,7 +59,7 @@ if(NOT TARGET aer::graphics)
             GIT_TAG main
             GIT_PROGRESS TRUE
         )
-        FetchContent_MakeAvailable( graphics )
+        FetchContent_MakeAvailable( graphics ${base_DEPENDENCY} )
         set( graphics_DEPENDENCY graphics )
     endif()
 endif()
