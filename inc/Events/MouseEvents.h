@@ -3,7 +3,7 @@
 #include <Base/Base.h>
 #include <Base/Event.h>
 
-#include "../Input/MouseCodes.h"
+#include <Input/MouseCodes.h>
 
 namespace aer
 {

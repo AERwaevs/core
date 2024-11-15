@@ -3,7 +3,7 @@
 #include <Base/Base.h>
 #include <Base/Event.h>
 
-#include "../Input/KeyCodes.h"
+#include <Input/KeyCodes.h>
 
 namespace aer
 {
