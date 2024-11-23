@@ -29,19 +29,19 @@ namespace aer
     protected:
         inline  void            Close()      { _running = false;    }
         virtual void            Update();
-        virtual bool            OnKeyDown(        KeyDownEvent&        );
-        virtual bool            OnKeyUp(          KeyUpEvent&          );
-        virtual bool            OnKeyHold(        KeyHoldEvent&        );
-        virtual bool            OnMouseMove(      MouseMoveEvent&      );
-        virtual bool            OnMouseScroll(    MouseScrollEvent&    );
-        virtual bool            OnMouseDown(      MouseDownEvent&      );
-        virtual bool            OnMouseDouble(    MouseDoubleEvent&    );
-        virtual bool            OnMouseUp(        MouseUpEvent&        );
-        virtual bool            OnWindowClose(    WindowCloseEvent&    );
-        virtual bool            OnWindowResize(   WindowResizeEvent&   );
-        virtual bool            OnWindowMinimize( WindowMinimizeEvent& );
-        virtual bool            OnWindowFocus(    WindowFocusEvent&    );
-        virtual bool            OnWindowUnfocus(  WindowUnfocusEvent&  );
+        virtual bool            OnKeyDown(         KeyDownEvent&         );
+        virtual bool            OnKeyUp(           KeyUpEvent&           );
+        virtual bool            OnKeyHold(         KeyHoldEvent&         );
+        virtual bool            OnMouseMove(       MouseMoveEvent&       );
+        virtual bool            OnMouseScroll(     MouseScrollEvent&     );
+        virtual bool            OnMouseDown(       MouseDownEvent&       );
+        virtual bool            OnMouseDouble(     MouseDoubleEvent&     );
+        virtual bool            OnMouseUp(         MouseUpEvent&         );
+        virtual bool            OnWindowClose(     WindowCloseEvent&     );
+        virtual bool            OnWindowConfigure( WindowConfigureEvent& );
+        virtual bool            OnWindowMinimize(  WindowMinimizeEvent&  );
+        virtual bool            OnWindowFocus(     WindowFocusEvent&     );
+        virtual bool            OnWindowUnfocus(   WindowUnfocusEvent&   );
     private:
                 void            Run();
                 void            PollEvents();

@@ -42,19 +42,19 @@ namespace aer
     {
         for( auto& event : _events )
         {
-            event->Dispatch< WindowCloseEvent    >( this, &Application::OnWindowClose    );
-            event->Dispatch< WindowResizeEvent   >( this, &Application::OnWindowResize   );
-            event->Dispatch< WindowMinimizeEvent >( this, &Application::OnWindowMinimize );
-            event->Dispatch< WindowFocusEvent    >( this, &Application::OnWindowFocus    );
-            event->Dispatch< WindowUnfocusEvent  >( this, &Application::OnWindowUnfocus  );
-            event->Dispatch< KeyDownEvent        >( this, &Application::OnKeyDown        );
-            event->Dispatch< KeyUpEvent          >( this, &Application::OnKeyUp          );
-            event->Dispatch< KeyHoldEvent        >( this, &Application::OnKeyHold        );
-            event->Dispatch< MouseMoveEvent      >( this, &Application::OnMouseMove      );
-            event->Dispatch< MouseScrollEvent    >( this, &Application::OnMouseScroll    );
-            event->Dispatch< MouseDownEvent      >( this, &Application::OnMouseDown      );
-            event->Dispatch< MouseDoubleEvent    >( this, &Application::OnMouseDouble    );
-            event->Dispatch< MouseUpEvent        >( this, &Application::OnMouseUp        );
+            event->Dispatch< WindowCloseEvent     >( this, &Application::OnWindowClose     );
+            event->Dispatch< WindowConfigureEvent >( this, &Application::OnWindowConfigure );
+            event->Dispatch< WindowMinimizeEvent  >( this, &Application::OnWindowMinimize  );
+            event->Dispatch< WindowFocusEvent     >( this, &Application::OnWindowFocus     );
+            event->Dispatch< WindowUnfocusEvent   >( this, &Application::OnWindowUnfocus   );
+            event->Dispatch< KeyDownEvent         >( this, &Application::OnKeyDown         );
+            event->Dispatch< KeyUpEvent           >( this, &Application::OnKeyUp           );
+            event->Dispatch< KeyHoldEvent         >( this, &Application::OnKeyHold         );
+            event->Dispatch< MouseMoveEvent       >( this, &Application::OnMouseMove       );
+            event->Dispatch< MouseScrollEvent     >( this, &Application::OnMouseScroll     );
+            event->Dispatch< MouseDownEvent       >( this, &Application::OnMouseDown       );
+            event->Dispatch< MouseDoubleEvent     >( this, &Application::OnMouseDouble     );
+            event->Dispatch< MouseUpEvent         >( this, &Application::OnMouseUp         );
         }
 
         return _events.clear();
@@ -102,12 +102,12 @@ namespace aer
 
     bool  Application::OnWindowClose( WindowCloseEvent& event )
     {
-        _windows.remove( event.window().load() );
+        _windows.remove( event.window.load() );
         if( _windows.empty() ) Close();
         return true;
     }
 
-    bool  Application::OnWindowResize( WindowResizeEvent& event )
+    bool  Application::OnWindowConfigure( WindowConfigureEvent& event )
     {
         return true;
     }
