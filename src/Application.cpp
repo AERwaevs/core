@@ -8,15 +8,15 @@ namespace aer
      Application::Application( const std::string& name, Arguments args )
     : _name( name ), _arguments( args )
     {
-        log::internal::init( args.Count(), args.Values() );
-        log::internal::add_file( _name.c_str() );
+        loguru::init( args.Count(), args.Values() );
+        loguru::add_file( _name.c_str(), loguru::FileMode::Truncate, loguru::Verbosity_MAX );
         
         s_instance = this;
     }
 
      Application::~Application( void )
     {
-        AE_WARN_IF( !_events.empty(), "Unhandled events: %zu", _events.size() );
+        LOG_IF_F( WARNING, !_events.empty(), "Unhandled events: %zu", _events.size() );
         if( _events.size() > 0 ) _events.clear();
     }
 
